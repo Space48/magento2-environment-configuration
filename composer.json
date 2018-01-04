@@ -27,7 +27,7 @@
             "Space48\\EnvironmentConfiguration\\": "src"
         },
         "files": [
-            "registration.php"
+            "src/registration.php"
         ]
     },
     "autoload-dev": {
