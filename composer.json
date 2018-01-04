@@ -7,8 +7,17 @@
             "email": "dan.kenny@space48.com"
         }
     ],
+    "repositories": {
+        "magento": {
+            "type": "composer",
+            "url": "https://repo.magento.com/"
+        }
+    },
     "scripts": {
         "test": "vendor/bin/phpunit -c phpunit.xml"
+    },
+    "require": {
+        "magento/framework": "^101.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^6.4"
@@ -21,6 +30,6 @@
     "autoload-dev": {
         "psr-4": {
             "Space48\\EnvironmentConfiguration\\Test\\": "test"
-	}
+        }
     }
 }
