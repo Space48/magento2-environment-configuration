@@ -17,8 +17,8 @@ class ConfigValueSet implements \IteratorAggregate
                     'Members of %s must be instances of %s, got %s',
                     self::class,
                     ConfigValue::class,
-                    gettype($configValue))
-                );
+                    gettype($configValue)
+                ));
             }
 
             $instance->values[$configValue->getPath()] = $configValue;
