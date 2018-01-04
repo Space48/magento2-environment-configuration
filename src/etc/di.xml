@@ -7,7 +7,7 @@
 
     <type name="Space48\EnvironmentConfiguration\PhpValuesProvider">
         <arguments>
-            <argument name="file_path" xsi:type="string">/app/etc/environment-configuration.php</argument>
+            <argument name="filePath" xsi:type="string">app/etc/environment-configuration.php</argument>
         </arguments>
     </type>
 

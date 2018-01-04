@@ -20,7 +20,7 @@ final class Environment
         return $environment === self::PRODUCTION
             || $environment === self::STAGING
             || $environment === self::DEVELOPMENT
-            || $environment === self::STAGING;
+            || $environment === self::LOCAL;
     }
 
     public static function all(): array

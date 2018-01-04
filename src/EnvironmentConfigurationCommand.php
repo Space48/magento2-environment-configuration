@@ -9,7 +9,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class EnvironmentConfigurationCommand extends Command
 {
-    const COMMAND_NAME = 'app:environment-configuration:apply';
+    const COMMAND_NAME = 'environment-configuration:apply';
 
     /** @var ConfigValueRepository */
     private $configValueRepository;
