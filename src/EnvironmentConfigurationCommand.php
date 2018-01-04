@@ -14,16 +14,16 @@ class EnvironmentConfigurationCommand extends Command
     /** @var ConfigValueRepository */
     private $configValueRepository;
 
-    /** @var EnvironmentConfigValues */
-    private $environmentConfigValues;
+    /** @var EnvironmentConfigValuesProvider */
+    private $environmentConfigValuesProvider;
 
     public function __construct(
         ConfigValueRepository $configValueRepository,
-        EnvironmentConfigValues $environmentConfigValues,
+        EnvironmentConfigValuesProvider $environmentConfigValuesProvider,
         string $name = null
     ) {
         $this->configValueRepository = $configValueRepository;
-        $this->environmentConfigValues = $environmentConfigValues;
+        $this->environmentConfigValuesProvider = $environmentConfigValuesProvider;
 
         parent::__construct($name);
     }
@@ -53,7 +53,10 @@ class EnvironmentConfigurationCommand extends Command
             ));
         }
 
-        $environmentValues = $this->environmentConfigValues->getConfigValuesByEnvironment($environment);
+        $environmentValues = $this
+            ->environmentConfigValuesProvider
+            ->getValues()
+            ->getConfigValuesByEnvironment($environment);
 
         /** @var ConfigValue $configValue */
         foreach ($environmentValues as $configValue) {

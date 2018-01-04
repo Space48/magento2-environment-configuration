@@ -9,6 +9,7 @@ use Space48\EnvironmentConfiguration\ConfigValueRepository;
 use Space48\EnvironmentConfiguration\Environment;
 use Space48\EnvironmentConfiguration\EnvironmentConfigurationCommand;
 use Space48\EnvironmentConfiguration\EnvironmentConfigValues;
+use Space48\EnvironmentConfiguration\EnvironmentConfigValuesProvider;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
@@ -68,7 +69,13 @@ class EnvironmentConfigurationCommandTest extends TestCase
             }
         };
 
-        $emptyConfig = EnvironmentConfigValues::create();
+        $emptyConfig = new class implements EnvironmentConfigValuesProvider
+        {
+            public function getValues(): EnvironmentConfigValues
+            {
+                return EnvironmentConfigValues::create();
+            }
+        };
 
         $this->subject = new EnvironmentConfigurationCommand(
             new ConfigValueRepository($mockConfigWriter),
