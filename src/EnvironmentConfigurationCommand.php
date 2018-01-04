@@ -9,6 +9,8 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class EnvironmentConfigurationCommand extends Command
 {
+    const COMMAND_NAME = 'app:environment-configuration:apply';
+
     /** @var ConfigValueRepository */
     private $configValueRepository;
 
@@ -30,7 +32,7 @@ class EnvironmentConfigurationCommand extends Command
     {
         parent::configure();
 
-        $this->setName('app:environment-configuration:apply');
+        $this->setName(self::COMMAND_NAME);
         $this->setDescription('Apply non-sensitive environment specific config values');
         $this->addArgument(
             'environment',
