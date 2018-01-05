@@ -24,7 +24,6 @@ class EnvironmentConfigurationCommand extends Command
     ) {
         $this->configValueRepository = $configValueRepository;
         $this->environmentConfigValuesProvider = $environmentConfigValuesProvider;
-
         parent::__construct($name);
     }
 
@@ -47,7 +46,7 @@ class EnvironmentConfigurationCommand extends Command
 
         if (!Environment::isValid($environment)) {
             throw new \InvalidArgumentException(sprintf(
-                'specified environment %s is invalid, accepted environments are %s.',
+                'Specified environment %s is invalid, accepted environments are %s.',
                 $environment,
                 implode(', ', Environment::all())
             ));
@@ -70,6 +69,4 @@ class EnvironmentConfigurationCommand extends Command
 
         return 0;
     }
-
-
 }

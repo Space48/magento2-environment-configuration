@@ -2,7 +2,6 @@
 
 namespace Space48\EnvironmentConfiguration;
 
-
 class PhpValuesProvider implements EnvironmentConfigValuesProvider
 {
     /** @var string */
