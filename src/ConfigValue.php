@@ -40,6 +40,6 @@ class ConfigValue
 
     public function getScope(): Scope
     {
-        return $this->scope ?? new Scope(ScopeConfigInterface::SCOPE_TYPE_DEFAULT, null);
+        return $this->scope ?? new Scope();
     }
 }

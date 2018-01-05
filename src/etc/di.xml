@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <preference
+        for="Space48\EnvironmentConfiguration\EnvironmentConfigValuesProvider"
+        type="Space48\EnvironmentConfiguration\PhpValuesProvider" />
+
+    <type name="Space48\EnvironmentConfiguration\PhpValuesProvider">
+        <arguments>
+            <argument name="filePath" xsi:type="string">app/etc/environment-configuration.php</argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Framework\Console\CommandListInterface">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="space48_environment-configuration_apply" xsi:type="object">Space48\EnvironmentConfiguration\EnvironmentConfigurationCommand</item>
+            </argument>
+        </arguments>
+    </type>
+
+</config>

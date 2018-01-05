@@ -9,7 +9,7 @@ class Scope
     private $scopeType;
     private $scopeCode;
 
-    public function __construct(string $scopeType = ScopeConfigInterface::SCOPE_TYPE_DEFAULT, $scopeCode = null)
+    public function __construct(string $scopeType = ScopeConfigInterface::SCOPE_TYPE_DEFAULT, $scopeCode = 0)
     {
         $this->scopeType = $scopeType;
         $this->scopeCode = $scopeCode;

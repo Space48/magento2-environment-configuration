@@ -25,7 +25,10 @@
     "autoload": {
         "psr-4": {
             "Space48\\EnvironmentConfiguration\\": "src"
-        }
+        },
+        "files": [
+            "src/registration.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
