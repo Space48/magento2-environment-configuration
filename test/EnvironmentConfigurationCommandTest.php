@@ -18,14 +18,6 @@ class EnvironmentConfigurationCommandTest extends TestCase
     /** @var EnvironmentConfigurationCommand */
     private $subject;
 
-    public function testConfigure()
-    {
-        self::assertEquals(
-            EnvironmentConfigurationCommand::COMMAND_NAME,
-            $this->subject->getName()
-        );
-    }
-
     public function testExecuteFailure()
     {
         $input = $this->getMockForAbstractClass(InputInterface::class);
@@ -45,19 +37,40 @@ class EnvironmentConfigurationCommandTest extends TestCase
             ->with('environment')
             ->willReturn(Environment::STAGING);
 
-        self::assertEquals(0, $this->subject->execute($input, $output));
+        self::assertEquals(
+            0,
+            $this->subject->execute($input, $output),
+            'Given a valid environment the command should execute and return 0'
+        );
+    }
 
+    public function testConfigure()
+    {
+        self::assertEquals(
+            EnvironmentConfigurationCommand::COMMAND_NAME,
+            $this->subject->getName()
+        );
     }
 
     protected function setUp()
     {
-        $mockConfigWriter = new class implements WriterInterface
+        $this->subject = new EnvironmentConfigurationCommand(
+            new ConfigValueRepository($this->getDummyConfigWriter()),
+            $this->getEmptyConfig()
+        );
+    }
+
+    private function getDummyConfigWriter(): WriterInterface
+    {
+        return new class implements WriterInterface
         {
             public function delete(
                 $path,
                 $scope = ScopeConfigInterface::SCOPE_TYPE_DEFAULT,
                 $scopeId = 0
-            ) {
+            )
+            {
+                // do nothing
             }
 
             public function save(
@@ -65,21 +78,24 @@ class EnvironmentConfigurationCommandTest extends TestCase
                 $value,
                 $scope = ScopeConfigInterface::SCOPE_TYPE_DEFAULT,
                 $scopeId = 0
-            ) {
+            )
+            {
+                // do nothing
             }
         };
+    }
 
-        $emptyConfig = new class implements EnvironmentConfigValuesProvider
+    /**
+     * @return EnvironmentConfigValuesProvider
+     */
+    protected function getEmptyConfig()
+    {
+        return new class implements EnvironmentConfigValuesProvider
         {
             public function getValues(): EnvironmentConfigValues
             {
                 return EnvironmentConfigValues::create();
             }
         };
-
-        $this->subject = new EnvironmentConfigurationCommand(
-            new ConfigValueRepository($mockConfigWriter),
-            $emptyConfig
-        );
     }
 }
