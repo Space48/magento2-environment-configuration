@@ -13,17 +13,6 @@ Please note that the configuration values to be stored and consumed by this modu
 Installation
 ==
 
-Add this repository to your `composer.json` file:
-```diff
-"repositories": {
-+    "space48-magento2-environment-configuration": {
-+        "type": "git",
-+        "url": "https://github.com/space48/magento2-environment-configuration.git"
-+     }
-}
-  ```
-  
-Then `composer require` it and enable it:
 ```sh
 composer require space48/magento2-environment-configuration
 php bin/magento module:enable Space48_EnvironmentConfiguration
@@ -34,7 +23,7 @@ Usage
 
 Day to day usage simply means running the command:
 ```sh
-php bin/magento environment-configuration:apply
+php bin/magento environment-configuration:apply local|development|staging|production
 ```
 
 When setting up the package or adding new config values edit or create a file at `app/etc/environment-configuration.php` that looks like this:
