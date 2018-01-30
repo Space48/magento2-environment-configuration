@@ -1,9 +1,14 @@
 Magento 2 Environment Configuration
 =
 
+No frills php configuration for Magento 2.
+
+This package is intended mostly for use by developers and your setup may not need it, please consult the Magento 2 documentation http://devdocs.magento.com/guides/v2.2/config-guide/deployment/ before using.
+
 Different environments need different configuration and the words used to describe an environment tends to stay the same across different magento code bases ('production', 'staging', etc..) using these words we can store these values in the code and set them with a single command either during a deployment or when setting up a project for the first time.
 
 Please note that the configuration values to be stored and consumed by this module are for convenience and shouldn't be used for handling passwords, keys or anything of a sensitive nature. If you need to store such things, either do it manually or use `env.php` or an environment variable.
+
 
 Installation
 ==
@@ -58,7 +63,7 @@ return EnvironmentConfigValues::create()
 Contributing
 ==
 
-If you find bugs, raise an issue or write a test to prove it, you can run the tests with a composer script:
+If you find bugs, raise an issue or write a test, you can run the tests with a composer script:
 ```sh
 composer test
 ```
