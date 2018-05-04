@@ -43,15 +43,6 @@ class EnvironmentConfigurationCommand extends Command
     public function execute(InputInterface $input, OutputInterface $output)
     {
         $environment = $input->getArgument('environment');
-
-        if (!Environment::isValid($environment)) {
-            throw new \InvalidArgumentException(sprintf(
-                'Specified environment %s is invalid, accepted environments are %s.',
-                $environment,
-                implode(', ', Environment::all())
-            ));
-        }
-
         $environmentValues = $this
             ->environmentConfigValuesProvider
             ->getValues()
@@ -62,10 +53,16 @@ class EnvironmentConfigurationCommand extends Command
             $this->configValueRepository->save($configValue);
         }
 
-        $output->writeln(sprintf(
-            'Updated config values for environment %s',
-            $environment)
-        );
+        if ($environmentValues->isEmpty()) {
+            $output->writeln('No configuration found for environment ' . $environment);
+        } else {
+            $output->writeln(sprintf(
+                'Updated config values for environment %s',
+                $environment
+            ));
+        }
+
+
 
         return 0;
     }

@@ -52,4 +52,9 @@ class ConfigValueSet implements \IteratorAggregate
     private function __construct()
     {
     }
+
+    public function isEmpty(): bool
+    {
+        return empty($this->values);
+    }
 }
