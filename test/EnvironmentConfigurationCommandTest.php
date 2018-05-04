@@ -18,15 +18,6 @@ class EnvironmentConfigurationCommandTest extends TestCase
     /** @var EnvironmentConfigurationCommand */
     private $subject;
 
-    public function testExecuteFailure()
-    {
-        $input = $this->getMockForAbstractClass(InputInterface::class);
-        $output = $this->getMockForAbstractClass(OutputInterface::class);
-
-        $this->expectException(\InvalidArgumentException::class);
-        $this->subject->execute($input, $output);
-    }
-
     public function testExecuteSuccess()
     {
         $input = $this->getMockForAbstractClass(InputInterface::class);
