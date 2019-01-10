@@ -18,7 +18,7 @@
         "test": "vendor/bin/phpunit -c phpunit.xml"
     },
     "require": {
-        "magento/framework": "^101.0"
+        "magento/framework": "^101.0|^102.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^6.4"
