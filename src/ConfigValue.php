@@ -34,7 +34,7 @@ class ConfigValue
     public function withScope(Scope $scope): self
     {
         $result = clone $this;
-        $result->scope = $scope->getScopeType();
+        $result->scope = $scope;
         return $result;
     }
 
