@@ -1,7 +1,7 @@
 Magento 2 Environment Configuration
 =
 
-No frills php configuration for Magento 2.
+No frills PHP configuration for Magento 2.
 
 This package is intended mostly for use by developers and your setup may not need it, please consult the Magento 2 documentation https://devdocs.magento.com/guides/v2.3/config-guide/deployment/ before using.
 
@@ -35,16 +35,20 @@ use Space48\EnvironmentConfiguration\ConfigValue;
 use Space48\EnvironmentConfiguration\ConfigValueSet;
 use Space48\EnvironmentConfiguration\Environment;
 use Space48\EnvironmentConfiguration\EnvironmentConfigValues;
+use Space48\EnvironmentConfiguration\Scope;
 
 return EnvironmentConfigValues::create()
     ->withConfigValuesForEnvironment(
         $values = ConfigValueSet::of([
-            // new ConfigValue('example/config/path', 'example config value')
+            new ConfigValue('example/config/path', 'example config value')
         ]),
         $environment = Environment::LOCAL)
     ->withConfigValuesForEnvironment(
         $values = ConfigValueSet::of([
-            // new ConfigValue('example/config/path', 'example config value')
+            (new ConfigValue('example/config/path', 'example website specific value'))
+                ->withScope(
+                    new Scope('websites', 3)
+                )
         ]),
         $environment = Environment::PRODUCTION);
 ```
@@ -56,6 +60,3 @@ If you find bugs, raise an issue or write a test, you can run the tests with a c
 ```sh
 composer test
 ```
-
-
-

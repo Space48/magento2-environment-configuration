@@ -62,8 +62,6 @@ class EnvironmentConfigurationCommand extends Command
             ));
         }
 
-
-
         return 0;
     }
 }
